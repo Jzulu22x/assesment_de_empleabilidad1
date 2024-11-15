@@ -1,0 +1,6 @@
+@assessmente_de_empleabilidad_HostAddress = http://localhost:5067
+
+GET {{assessmente_de_empleabilidad_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
