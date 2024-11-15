@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using assessmente_de_empleabilidad.Data;
 
@@ -11,9 +12,11 @@ using assessmente_de_empleabilidad.Data;
 namespace assessmente_de_empleabilidad.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241115160953_UpdateAppointmentTable")]
+    partial class UpdateAppointmentTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,16 +58,6 @@ namespace assessmente_de_empleabilidad.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("admins");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Admin One",
-                            Password = "adminpassword",
-                            RoleId = 1,
-                            UserName = "admin123"
-                        });
                 });
 
             modelBuilder.Entity("assessmente_de_empleabilidad.Models.Appointment", b =>
@@ -122,26 +115,6 @@ namespace assessmente_de_empleabilidad.Migrations
                             t.Property("patient_id")
                                 .HasColumnName("patient_id1");
                         });
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedAt = new DateTime(2024, 11, 15, 11, 45, 18, 167, DateTimeKind.Local).AddTicks(540),
-                            Date = new DateTime(2024, 11, 20, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 1,
-                            PatientId = 1,
-                            Reason = "Routine Checkup"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CreatedAt = new DateTime(2024, 11, 15, 11, 45, 18, 167, DateTimeKind.Local).AddTicks(543),
-                            Date = new DateTime(2024, 11, 21, 14, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 2,
-                            PatientId = 2,
-                            Reason = "Consultation"
-                        });
                 });
 
             modelBuilder.Entity("assessmente_de_empleabilidad.Models.Doctor", b =>
@@ -192,30 +165,6 @@ namespace assessmente_de_empleabilidad.Migrations
                     b.HasIndex("SpecialtyId");
 
                     b.ToTable("doctors");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Availability = true,
-                            Email = "john.doe@example.com",
-                            FirstName = "John",
-                            LastName = "Doe",
-                            RoleId = 2,
-                            SpecialtyId = 1,
-                            UserName = "johndoe"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Availability = false,
-                            Email = "jane.smith@example.com",
-                            FirstName = "Jane",
-                            LastName = "Smith",
-                            RoleId = 2,
-                            SpecialtyId = 2,
-                            UserName = "janesmith"
-                        });
                 });
 
             modelBuilder.Entity("assessmente_de_empleabilidad.Models.Patient", b =>
@@ -256,26 +205,6 @@ namespace assessmente_de_empleabilidad.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("patients");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Email = "alice.brown@example.com",
-                            FirstName = "Alice",
-                            LastName = "Brown",
-                            RoleId = 3,
-                            UserName = "alicebrown"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Email = "bob.white@example.com",
-                            FirstName = "Bob",
-                            LastName = "White",
-                            RoleId = 3,
-                            UserName = "bobwhite"
-                        });
                 });
 
             modelBuilder.Entity("assessmente_de_empleabilidad.Models.Role", b =>
@@ -295,23 +224,6 @@ namespace assessmente_de_empleabilidad.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("roles");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Administrator"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Doctor"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Patient"
-                        });
                 });
 
             modelBuilder.Entity("assessmente_de_empleabilidad.Models.Speciality", b =>
@@ -331,18 +243,6 @@ namespace assessmente_de_empleabilidad.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("specialities");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Cardiology"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Neurology"
-                        });
                 });
 
             modelBuilder.Entity("assessmente_de_empleabilidad.Models.Admin", b =>

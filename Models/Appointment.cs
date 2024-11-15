@@ -19,9 +19,6 @@ public class Appointment
     [Column("date")]
     public DateTime Date { get; set; }
 
-    [Column("time")]
-    public required string Time { get; set; }
-
     [Column("reason")]
     [Required(ErrorMessage = "Reason is required")]
     [MaxLength(100, ErrorMessage = "Reason should be less than 100 characters")]
@@ -36,8 +33,7 @@ public class Appointment
     public int DoctorId { get; set; }
     
     [Column("created_at")]
-    public DateTime CreatedAt { get; set; } = DateTime.Now;
-
+    public DateTime CreatedAt { get; set; } = DateTime.Now;      
     [Column("updated_at")]
     public DateTime? UpdatedAt { get; set; }
 
